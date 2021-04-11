@@ -81,15 +81,18 @@ h1 {
 .center::after {
   content: '';
   position: absolute;
-  border: 7px solid hsl(234, 17%, 12%);
+  border: 7px solid;
+  border-color: transparent hsl(234, 17%, 12%) hsl(234, 17%, 12%) transparent;
   left: -7px;
   bottom: -7px;
   border-radius: 50%;
+  transform: rotateZ(-45deg);
 }
 
 .center::after {
   left: auto;
   right: -7px;
+  transform: rotateZ(135deg);
 }
 
 .time .bottom {
@@ -123,6 +126,7 @@ h1 {
   color: hsl(234, 17%, 12%);
   position: relative;
   padding: 5px 10px;
+  outline: none;
 }
 
 .attribution a::before {
@@ -139,10 +143,12 @@ h1 {
   will-change: transform;
 }
 
+.attribution a:focus-within,
 .attribution a:hover {
   color: hsl(345, 95%, 68%);
 }
 
+.attribution a:focus-within::before,
 .attribution a:hover::before {
   transform: skewX(0deg);
   border: 1px solid hsl(345, 95%, 68%);
