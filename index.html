@@ -17,39 +17,47 @@
   <body>
     <div class="container">
       <h1>We're launching soon</h1>
-      <div class="time">
-        <div class="top"></div>
-        <div class="center"></div>
-        <span id="days">10</span>
-        <div class="bottom"></div>
+
+      <div class="time days">
+        <div class="digit" data-digit-before="29" data-digit-after="30">
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">29</div>
+            <div class="card-face card-face-back">30</div>
+          </div>
+        </div>
         <div class="time__text">Days</div>
       </div>
 
-      <div class="time">
-        <div class="top"></div>
-        <div class="center"></div>
-        <span id="hours">05</span>
-        <div class="bottom"></div>
+      <div class="time hours">
+        <div class="digit" data-digit-before="29" data-digit-after="30">
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">29</div>
+            <div class="card-face card-face-back">30</div>
+          </div>
+        </div>
         <div class="time__text">Hours</div>
       </div>
 
-      <div class="time">
-        <div class="top"></div>
-        <div class="center"></div>
-        <span id="minutes">56</span>
-        <div class="bottom"></div>
+      <div class="time minutes">
+        <div class="digit" data-digit-before="29" data-digit-after="30">
+          <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-face card-face-front">29</div>
+            <div class="card-face card-face-back">30</div>
+          </div>
+        </div>
         <div class="time__text">Minutes</div>
       </div>
 
-      <div class="time">
-        <div class="top"></div>
-        <div class="center"></div>
-        <span id="seconds">32</span>
-        <div class="bottom"></div>
+      <div class="time seconds">
+        <div class="digit" data-digit-before="29" data-digit-after="30">
+          <div class="card">
+            <div class="card-face card-face-front">29</div>
+            <div class="card-face card-face-back">30</div>
+          </div>
+        </div>
         <div class="time__text">Seconds</div>
       </div>
     </div>
-
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

@@ -39,70 +39,128 @@ h1 {
 }
 
 .time {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-  width: 150px;
-  margin: 15px;
-  border-radius: 5px;
-  box-shadow: 0 7px 0 hsl(234, 17%, 12%);
+  font-size: 5rem;
+  font-family: sans-serif;
+  line-height: 0;
+  perspective: 500px;
+  margin: 0 15px;
+}
+
+.time * {
   user-select: none;
 }
 
-.time span {
-  font-size: 5rem;
-  font-weight: 700;
-  color: hsl(345, 95%, 68%);
-  z-index: 10;
+.digit {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 10px 0 hsl(234, 17%, 12%);
 }
 
-.time .top {
-  background: hsl(236, 21%, 26%);
+.digit,
+.digit::before,
+.digit::after,
+.card,
+.card-face {
+  border-radius: 7px;
+}
+
+.digit::before,
+.digit::after {
+  position: absolute;
+  z-index: 0;
+
+  display: flex;
+  justify-content: center;
+
   width: 100%;
   height: 50%;
-  position: absolute;
-  top: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  overflow: hidden;
 }
 
-.center {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  height: 1px;
-  z-index: 30;
-  background: rgba(0, 0, 0, 0.1);
-}
+.digit::before {
+  content: attr(data-digit-before);
 
-.center::before,
-.center::after {
-  content: '';
-  position: absolute;
-  border: 7px solid;
-  border-color: transparent hsl(234, 17%, 12%) hsl(234, 17%, 12%) transparent;
-  left: -7px;
-  bottom: -7px;
-  border-radius: 50%;
-  transform: rotateZ(-45deg);
-}
-
-.center::after {
-  left: auto;
-  right: -7px;
-  transform: rotateZ(135deg);
-}
-
-.time .bottom {
-  background: hsl(236, 21%, 31%);
-  width: 100%;
-  height: 50%;
-  position: absolute;
   bottom: 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  align-items: flex-start;
+}
+
+.digit::after {
+  content: attr(data-digit-after);
+  top: 0;
+  align-items: flex-end;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+}
+
+.card.flipped {
+  animation: flip 1s infinite;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+  }
+
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+.card-face {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.card-face-front {
+  align-items: flex-end;
+}
+
+.card-face-back {
+  align-items: flex-start;
+  transform: rotateX(-180deg);
+}
+
+.digit::before,
+.digit::after,
+.card-face-front,
+.card-face-back {
+  background: white;
+  color: hsl(345, 95%, 68%);
+}
+
+.digit::before,
+.card-face-back {
+  box-shadow: inset 0 1px rgb(0 0 0 / 30%);
+
+  background-color: hsl(236, 21%, 31%);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.digit::after,
+.card-face-front {
+  box-shadow: inset 0 -1px rgb(0 0 0 / 30%);
+  color: hsl(345, 95%, 68%);
+  background-color: hsl(236, 21%, 26%);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .time__text {
@@ -112,6 +170,7 @@ h1 {
   letter-spacing: 6px;
   color: hsl(237, 18%, 59%);
   font-weight: 700;
+  font-size: 14px;
 }
 
 .attribution {
